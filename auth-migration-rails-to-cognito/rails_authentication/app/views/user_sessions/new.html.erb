@@ -1,0 +1,23 @@
+<h1>サインイン</h1>
+<h2>UserSessions#new</h2>
+<p>Find me in app/views/user_sessions/new.html.erb</p>
+
+<%= form_with url: user_sessions_path, method: :post do |form| %>
+
+  <div class="field">
+    <%= form.label :email, :メールアドレス %><br />
+    <%= form.text_field :email  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password, :パスワード %><br />
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :サインイン %>
+  </div>
+
+<% end %>
+
+<%= link_to "戻る", root_path %>

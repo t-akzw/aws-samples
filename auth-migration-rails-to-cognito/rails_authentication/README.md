@@ -1,0 +1,57 @@
+# Rails Authentication Practice 01
+- `rails new` and `Sorcery` by Rails6.1+MySQL8.0 sample
+
+## Rails README
+- Ruby version
+  - 2.6.6
+- Database
+  - MySQL
+- Database creation
+  - `rails db:create`
+  - `rails db:migrate`
+- Deployment instructions
+  - `docker-compose up -d`
+
+## Reference sources
+- docker-compose下でrails newして Rails6.1 + Sorcery を試す（ Sorcery の仕組み少し解説） | 北山淳也 | zenn
+  - https://zenn.dev/junki555/articles/e4172b3b79c29e
+- docker-compose 下で rails new して Rails6.1+deviseを試す | 北山淳也 | zenn
+  - https://zenn.dev/junki555/articles/83339b5d58f416
+- Sorcery / sorcery | GitHub
+  - https://github.com/Sorcery/sorcery
+- asakusarb / action_args | GitHub
+  - https://github.com/asakusarb/action_args
+- SorceryでRailsアプリケーションに認証機能を実装する | Boys Be Engineer 非エンジニアよ、エンジニアになれ
+  - https://kurose.me/sorcery-rails/
+- 【Rails】Sorceryでログイン機能を実装する | Qiita
+  - https://qiita.com/d0ne1s/items/f6f8f4cc7ae6eea069fb
+- Simple Password Authentication | Sorcery/sorcery Wiki
+  - https://github.com/Sorcery/sorcery/wiki/Simple-Password-Authentication
+- Railsバリデーションまとめ | Qiita
+  - https://qiita.com/h1kita/items/772b81a1cc066e67930e
+- 【Ruby on Rails】sendメソッドのいろんな書き方 | Qiita
+  - https://qiita.com/ngron/items/05d3a9624c2c3ec5dbb6
+- 【Rails】SorceryでTwitter認証 | Qiita
+  - https://qiita.com/aiandrox/items/5435c8b285c7dc0c455f
+- 【Sorcery】Sorceryで使えるようになるメソッドとその活用例 | Qiita
+  - https://qiita.com/aiandrox/items/65317517954d8d44d957
+- gem sorcery使ってみた | とまとの成長日記
+  - https://toomeeto.hatenablog.com/entry/2019/07/15/030337
+- RailsのsorceryでBrute force対策を行う | rochefort's blog
+  - https://rochefort.hatenablog.com/entry/2016/10/18/000923
+- rails deviseの代わりにSorceryを使って認証機能をしてみたよ │ 文系エンジニア大学生の技術ブログ
+  - https://www.for-engineer.life/entry/rails-sorcery/
+- #283 Authentication with Sorcery | RailsCasts
+  - http://railscasts.com/episodes/283-authentication-with-sorcery?language=ja&view=asciicast
+- パスワードリセット機能を実装する | Ruby on Rails Learning Diary
+  - https://study-diary.hatenadiary.jp/entry/2020/08/27/155834
+- Rails そうだ、コントローラで引数を取ろう ActionArgs | Qiita
+  - https://qiita.com/sijiaoh/items/78f2379d331b004d6cc3
+- ActionArgsが素晴らしい件 #Rails | Islands in the byte stream
+  - https://gfx.hatenablog.com/entry/2017/06/24/115822
+- 名前付きルートの書き方が分からないとき | Qiita
+  - https://qiita.com/engineer_yusuke/items/21b65ddd6d43e08fd251
+- 【Rails 5】(新) form_with と (旧) form_tag, form_for の違い | Qiita
+  - https://qiita.com/hmmrjn/items/24f3b8eade206ace17e2
+- noticeやalertの設定方法の違い | Qiita
+  - https://qiita.com/jnchito/items/94f3ad15128f88bf89d6

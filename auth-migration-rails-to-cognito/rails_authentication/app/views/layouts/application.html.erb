@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+  </head>
+
+  <body>
+    <div id="nav" style="margin-top:30px;">
+      <% if logged_in? %>
+        <strong><%= current_user.email %></strong> としてログイン中です |
+        <%= link_to "サインアウト", sign_out_url, method: :get %>
+      <% else %>
+        <%= link_to "サインアップ", sign_up_url %> |
+        <%= link_to "サインイン", sign_in_url %>
+      <% end %>
+    </div>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+
+    <%= yield %>
+  </body>
+</html>

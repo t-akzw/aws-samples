@@ -1,0 +1,27 @@
+<h1>サインアップ</h1>
+<h2>Users#new</h2>
+<p>Find me in app/views/users/new.html.erb</p>
+
+<%= form_with model: @user, url: users_path, method: :post do |form| %>
+
+  <div class="field">
+    <%= form.label :email, :メールアドレス %><br />
+    <%= form.text_field :email  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password, :パスワード %><br />
+    <%= form.password_field :password  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation, :パスワードを再度入力してください %><br />
+    <%= form.password_field :password_confirmation  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :登録 %>
+  </div>
+<% end %>
+
+<%= link_to "戻る", root_path %>
