@@ -9,9 +9,9 @@ RUN set -x && apt-get update -qq && apt-get install -yq nodejs yarn vim default-
 RUN mkdir /app
 WORKDIR /app
 # ※ここのコメントはあとで外す
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
-RUN bundle install
+# COPY Gemfile /app/Gemfile
+# COPY Gemfile.lock /app/Gemfile.lock
+# RUN bundle install
 COPY . /app
 
 # Add a script to be executed every time the container starts.
@@ -22,4 +22,4 @@ EXPOSE 3000
 
 # Start the main process.
 # ※ここのコメントはあとで外す
-CMD ["rails", "server", "-b", "0.0.0.0"]
+# CMD ["rails", "server", "-b", "0.0.0.0"]
