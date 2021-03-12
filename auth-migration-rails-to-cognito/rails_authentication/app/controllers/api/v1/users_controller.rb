@@ -22,7 +22,6 @@ module Api
       def create
         respond_to do |format|
           @user = User.new(user_params)
-          binding.pry
 
           if @user.save
             format.json { render nothing: true, status: :created }

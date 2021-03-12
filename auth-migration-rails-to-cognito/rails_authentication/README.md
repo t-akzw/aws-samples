@@ -55,3 +55,27 @@
   - https://qiita.com/hmmrjn/items/24f3b8eade206ace17e2
 - noticeやalertの設定方法の違い | Qiita
   - https://qiita.com/jnchito/items/94f3ad15128f88bf89d6
+
+
+
+# API
+
+```bash
+# ユーザ追加
+curl -i -X POST http://localhost:3004/api/v1/users.json -d 'user[email]=hoge+001@hoge.com' -d 'user[password]=password' -d 'user[password_confirmation]=password'
+
+# ログイン
+curl -i -X POST http://localhost:3004/api/v1/user_sessions.json -d 'user[email]=hoge+001@hoge.com' -d  'user[password]=password'
+
+  # 結果
+  # {"user":{"id":8,"email":"hoge 001@hoge.com"},"access_token":"834a4b51dc9bb3de7541f85b82eb00c5"}%
+
+# ユーザ情報取得
+curl -i -X GET -H 'ACCESS_TOKEN: 834a4b51dc9bb3de7541f85b82eb00c5' http://localhost:3004/api/v1/users.json
+
+# id指定でユーザ情報取得
+curl -i -X GET -H 'ACCESS_TOKEN: 834a4b51dc9bb3de7541f85b82eb00c5' http://localhost:3004/api/v1/users/8.json
+
+# ログアウト
+curl -i -X DELETE -H 'ACCESS_TOKEN: 834a4b51dc9bb3de7541f85b82eb00c5' http://localhost:3004/api/v1/user_sessions.json
+```

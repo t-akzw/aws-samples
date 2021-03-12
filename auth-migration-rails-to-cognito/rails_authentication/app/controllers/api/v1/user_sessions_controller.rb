@@ -1,7 +1,7 @@
 module Api
   module V1
     class UserSessionsController < Api::V1::ApplicationBaseController
-      skip_before_filter :require_valid_token, only: :create
+      skip_before_action :require_valid_token, :verify_authenticity_token, only: :create
 
       def create
         if @user = login(login_user[:email], login_user[:password])
@@ -20,9 +20,12 @@ module Api
         if api_key
           user = User.find(api_key.user_id)
           user.inactivate
-        else
           respond_to do |format|
             format.json { render nothing: true, status: :ok }
+          end
+        else
+          respond_to do |format|
+            format.json { render nothing: true, status: :bad_request }
           end
         end
       end
