@@ -1,0 +1,28 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-dashboardvuebootstra-dev-133149-authRole",
+            "UnauthRoleArn": "arn:aws:iam::310343077194:role/amplify-dashboardvuebootstra-dev-133149-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::310343077194:role/amplify-dashboardvuebootstra-dev-133149-authRole",
+            "Region": "ap-northeast-1",
+            "DeploymentBucketName": "amplify-dashboardvuebootstra-dev-133149-deployment",
+            "UnauthRoleName": "amplify-dashboardvuebootstra-dev-133149-unauthRole",
+            "StackName": "amplify-dashboardvuebootstra-dev-133149",
+            "StackId": "arn:aws:cloudformation:ap-northeast-1:310343077194:stack/amplify-dashboardvuebootstra-dev-133149/861d9be0-2244-11eb-b47d-0ea2ab901b36",
+            "AmplifyAppId": "dmrq24kl0bmc4"
+        },
+        "categories": {
+            "auth": {
+                "dashboardvuebootstra391f2814": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "dmrq24kl0bmc4",
+                    "type": "manual"
+                }
+            }
+        }
+    }
+}
