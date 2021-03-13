@@ -2,18 +2,18 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateLineDataInput = {
+export type CreateTodoInput = {
   id?: string | null,
-  label: string,
-  data: number,
+  name: string,
+  description?: string | null,
 };
 
-export type ModelLineDataConditionInput = {
-  label?: ModelStringInput | null,
-  data?: ModelIntInput | null,
-  and?: Array< ModelLineDataConditionInput | null > | null,
-  or?: Array< ModelLineDataConditionInput | null > | null,
-  not?: ModelLineDataConditionInput | null,
+export type ModelTodoConditionInput = {
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  and?: Array< ModelTodoConditionInput | null > | null,
+  or?: Array< ModelTodoConditionInput | null > | null,
+  not?: ModelTodoConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -56,35 +56,32 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type ModelIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
+export type Todo = {
+  __typename: "Todo",
+  id?: string,
+  name?: string,
+  description?: string | null,
+  createdAt?: string,
+  updatedAt?: string,
 };
 
-export type UpdateLineDataInput = {
+export type UpdateTodoInput = {
   id: string,
-  label?: string | null,
-  data?: number | null,
+  name?: string | null,
+  description?: string | null,
 };
 
-export type DeleteLineDataInput = {
+export type DeleteTodoInput = {
   id?: string | null,
 };
 
-export type ModelLineDataFilterInput = {
+export type ModelTodoFilterInput = {
   id?: ModelIDInput | null,
-  label?: ModelStringInput | null,
-  data?: ModelIntInput | null,
-  and?: Array< ModelLineDataFilterInput | null > | null,
-  or?: Array< ModelLineDataFilterInput | null > | null,
-  not?: ModelLineDataFilterInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  and?: Array< ModelTodoFilterInput | null > | null,
+  or?: Array< ModelTodoFilterInput | null > | null,
+  not?: ModelTodoFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -103,118 +100,124 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type CreateLineDataMutationVariables = {
-  input: CreateLineDataInput,
-  condition?: ModelLineDataConditionInput | null,
+export type ModelTodoConnection = {
+  __typename: "ModelTodoConnection",
+  items?:  Array<Todo | null > | null,
+  nextToken?: string | null,
 };
 
-export type CreateLineDataMutation = {
-  createLineData:  {
-    __typename: "LineData",
+export type CreateTodoMutationVariables = {
+  input?: CreateTodoInput,
+  condition?: ModelTodoConditionInput | null,
+};
+
+export type CreateTodoMutation = {
+  createTodo?:  {
+    __typename: "Todo",
     id: string,
-    label: string,
-    data: number,
+    name: string,
+    description?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type UpdateLineDataMutationVariables = {
-  input: UpdateLineDataInput,
-  condition?: ModelLineDataConditionInput | null,
+export type UpdateTodoMutationVariables = {
+  input?: UpdateTodoInput,
+  condition?: ModelTodoConditionInput | null,
 };
 
-export type UpdateLineDataMutation = {
-  updateLineData:  {
-    __typename: "LineData",
+export type UpdateTodoMutation = {
+  updateTodo?:  {
+    __typename: "Todo",
     id: string,
-    label: string,
-    data: number,
+    name: string,
+    description?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type DeleteLineDataMutationVariables = {
-  input: DeleteLineDataInput,
-  condition?: ModelLineDataConditionInput | null,
+export type DeleteTodoMutationVariables = {
+  input?: DeleteTodoInput,
+  condition?: ModelTodoConditionInput | null,
 };
 
-export type DeleteLineDataMutation = {
-  deleteLineData:  {
-    __typename: "LineData",
+export type DeleteTodoMutation = {
+  deleteTodo?:  {
+    __typename: "Todo",
     id: string,
-    label: string,
-    data: number,
+    name: string,
+    description?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type GetLineDataQueryVariables = {
-  id: string,
+export type GetTodoQueryVariables = {
+  id?: string,
 };
 
-export type GetLineDataQuery = {
-  getLineData:  {
-    __typename: "LineData",
+export type GetTodoQuery = {
+  getTodo?:  {
+    __typename: "Todo",
     id: string,
-    label: string,
-    data: number,
+    name: string,
+    description?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type ListLineDatasQueryVariables = {
-  filter?: ModelLineDataFilterInput | null,
+export type ListTodosQueryVariables = {
+  filter?: ModelTodoFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListLineDatasQuery = {
-  listLineDatas:  {
-    __typename: "ModelLineDataConnection",
-    items:  Array< {
-      __typename: "LineData",
+export type ListTodosQuery = {
+  listTodos?:  {
+    __typename: "ModelTodoConnection",
+    items?:  Array< {
+      __typename: "Todo",
       id: string,
-      label: string,
-      data: number,
+      name: string,
+      description?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
-    nextToken: string | null,
+    nextToken?: string | null,
   } | null,
 };
 
-export type OnCreateLineDataSubscription = {
-  onCreateLineData:  {
-    __typename: "LineData",
+export type OnCreateTodoSubscription = {
+  onCreateTodo?:  {
+    __typename: "Todo",
     id: string,
-    label: string,
-    data: number,
+    name: string,
+    description?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnUpdateLineDataSubscription = {
-  onUpdateLineData:  {
-    __typename: "LineData",
+export type OnUpdateTodoSubscription = {
+  onUpdateTodo?:  {
+    __typename: "Todo",
     id: string,
-    label: string,
-    data: number,
+    name: string,
+    description?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnDeleteLineDataSubscription = {
-  onDeleteLineData:  {
-    __typename: "LineData",
+export type OnDeleteTodoSubscription = {
+  onDeleteTodo?:  {
+    __typename: "Todo",
     id: string,
-    label: string,
-    data: number,
+    name: string,
+    description?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
