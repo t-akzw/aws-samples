@@ -1,4 +1,4 @@
-# Rails Authentication Practice 01
+# Rails Authentication
 - `rails new` and `Sorcery` by Rails6.1+MySQL8.0 sample
 
 ## Rails README
@@ -12,70 +12,68 @@
 - Deployment instructions
   - `docker-compose up -d`
 
-## Reference sources
-- docker-compose下でrails newして Rails6.1 + Sorcery を試す（ Sorcery の仕組み少し解説） | 北山淳也 | zenn
-  - https://zenn.dev/junki555/articles/e4172b3b79c29e
-- docker-compose 下で rails new して Rails6.1+deviseを試す | 北山淳也 | zenn
-  - https://zenn.dev/junki555/articles/83339b5d58f416
-- Sorcery / sorcery | GitHub
-  - https://github.com/Sorcery/sorcery
-- asakusarb / action_args | GitHub
-  - https://github.com/asakusarb/action_args
-- SorceryでRailsアプリケーションに認証機能を実装する | Boys Be Engineer 非エンジニアよ、エンジニアになれ
-  - https://kurose.me/sorcery-rails/
-- 【Rails】Sorceryでログイン機能を実装する | Qiita
-  - https://qiita.com/d0ne1s/items/f6f8f4cc7ae6eea069fb
-- Simple Password Authentication | Sorcery/sorcery Wiki
-  - https://github.com/Sorcery/sorcery/wiki/Simple-Password-Authentication
-- Railsバリデーションまとめ | Qiita
-  - https://qiita.com/h1kita/items/772b81a1cc066e67930e
-- 【Ruby on Rails】sendメソッドのいろんな書き方 | Qiita
-  - https://qiita.com/ngron/items/05d3a9624c2c3ec5dbb6
-- 【Rails】SorceryでTwitter認証 | Qiita
-  - https://qiita.com/aiandrox/items/5435c8b285c7dc0c455f
-- 【Sorcery】Sorceryで使えるようになるメソッドとその活用例 | Qiita
-  - https://qiita.com/aiandrox/items/65317517954d8d44d957
-- gem sorcery使ってみた | とまとの成長日記
-  - https://toomeeto.hatenablog.com/entry/2019/07/15/030337
-- RailsのsorceryでBrute force対策を行う | rochefort's blog
-  - https://rochefort.hatenablog.com/entry/2016/10/18/000923
-- rails deviseの代わりにSorceryを使って認証機能をしてみたよ │ 文系エンジニア大学生の技術ブログ
-  - https://www.for-engineer.life/entry/rails-sorcery/
-- #283 Authentication with Sorcery | RailsCasts
-  - http://railscasts.com/episodes/283-authentication-with-sorcery?language=ja&view=asciicast
-- パスワードリセット機能を実装する | Ruby on Rails Learning Diary
-  - https://study-diary.hatenadiary.jp/entry/2020/08/27/155834
-- Rails そうだ、コントローラで引数を取ろう ActionArgs | Qiita
-  - https://qiita.com/sijiaoh/items/78f2379d331b004d6cc3
-- ActionArgsが素晴らしい件 #Rails | Islands in the byte stream
-  - https://gfx.hatenablog.com/entry/2017/06/24/115822
-- 名前付きルートの書き方が分からないとき | Qiita
-  - https://qiita.com/engineer_yusuke/items/21b65ddd6d43e08fd251
-- 【Rails 5】(新) form_with と (旧) form_tag, form_for の違い | Qiita
-  - https://qiita.com/hmmrjn/items/24f3b8eade206ace17e2
-- noticeやalertの設定方法の違い | Qiita
-  - https://qiita.com/jnchito/items/94f3ad15128f88bf89d6
+# デモ手順書
+
+1. Cognitoで認証を実装した[ウェブページ](https://dev.dagzggcqf8lqq.amplifyapp.com)にアクセス
+1. Cognitoのユーザプールに`akazawt+777@amazon.com`でログインできないことを確認
+1. 以降、Railsで実装された認証で`akazawt+777@amazon.com`ユーザを作成して、Cognitoユーザプールにインポートするデモを実施する
+    1. Rails Sign Up/In APIでユーザを作成する
+    1. ユーザリスト取得APIでユーザが作成されていることを確認する
+    1. セッションマネージャーでEC2にログイン
+    1. CSVを作成する
+    1. ユーザプールのインポートJob作成・開始
+    1. Cognito Consoleでユーザがインポートされたことを確認する
+    1. 再度、ウェブページに`akazawt+777@amazon.com`でログイン
+    1. ユーザが存在してパスワードリセットに進めることを確認する
 
 
-
-# API
+# Rails API
 
 ```bash
+URL=#コンソールを確認
+EMAIL="akazawt+777@amazon.com"
+USER_EMAIL="user[email]=${EMAIL}"
+PASS="password"
+USER_PASS="user[password]=${PASS}"
+PASS_CONFIRM="password"
+USER_PASS_CONFIRM="user[password_confirmation]=${PASS_CONFIRM}"
+
 # ユーザ追加
-curl -i -X POST http://localhost:3004/api/v1/users.json -d 'user[email]=hoge+001@hoge.com' -d 'user[password]=password' -d 'user[password_confirmation]=password'
+curl -i -X POST http://${URL}/api/v1/users.json -d "${USER_EMAIL}" -d "${USER_PASS}" -d "${USER_PASS_CONFIRM}"
 
 # ログイン
-curl -i -X POST http://localhost:3004/api/v1/user_sessions.json -d 'user[email]=hoge+001@hoge.com' -d  'user[password]=password'
+curl -i -X POST http://${URL}/api/v1/user_sessions.json -d "${USER_EMAIL}" -d  "${USER_PASS}"
 
-  # 結果
-  # {"user":{"id":8,"email":"hoge 001@hoge.com"},"access_token":"834a4b51dc9bb3de7541f85b82eb00c5"}%
+TOKEN="36d30299a8db548b63f451ff361be5e4"
+USER_TOKEN="ACCESS_TOKEN: ${TOKEN}"
 
-# ユーザ情報取得
-curl -i -X GET -H 'ACCESS_TOKEN: 834a4b51dc9bb3de7541f85b82eb00c5' http://localhost:3004/api/v1/users.json
+## ユーザリスト取得API
+curl -i -X GET -H "${USER_TOKEN}" http://${URL}/api/v1/users.json
+```
 
-# id指定でユーザ情報取得
-curl -i -X GET -H 'ACCESS_TOKEN: 834a4b51dc9bb3de7541f85b82eb00c5' http://localhost:3004/api/v1/users/8.json
+# セッションマネージャー操作
 
-# ログアウト
-curl -i -X DELETE -H 'ACCESS_TOKEN: 834a4b51dc9bb3de7541f85b82eb00c5' http://localhost:3004/api/v1/user_sessions.json
+```bash
+# CSV作成
+cat tmp/users.csv
+docker exec -it app bundle exec rake csv:export
+cat tmp/users.csv
+
+# ユーザプールにcsvをインポートするjobの作成
+
+REGION="us-east-1"
+JOBNAME="IMPORTJOB0777"
+USER_POOL_ID="us-east-1_g21km8avI"
+LOGS_ARN=arn:aws:iam::067150986393:role/service-role/Cognito-UserImport-Role
+aws cognito-idp create-user-import-job --region "${REGION}" --job-name "${JOBNAME}" --user-pool-id "${USER_POOL_ID}" --cloud-watch-logs-role-arn "${LOGS_ARN}" > tmp.json
+
+JOBID=`cat tmp.json |jq ". | .UserImportJob.JobId" |sed 's/"//g'`
+PRESIGNED=`cat tmp.json |jq ". | .UserImportJob.PreSignedUrl" |sed 's/"//g'`
+
+PATH_TO_CSV_FILE="./tmp/users.csv"
+
+curl -v -T "${PATH_TO_CSV_FILE}" -H "x-amz-server-side-encryption:aws:kms" "${PRESIGNED}"
+
+# ユーザーインポートジョブの開始
+aws cognito-idp start-user-import-job --region "${REGION}" --job-id "${JOBID}" --user-pool-id "${USER_POOL_ID}"
 ```
