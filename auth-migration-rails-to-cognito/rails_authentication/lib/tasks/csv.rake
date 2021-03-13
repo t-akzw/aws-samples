@@ -4,7 +4,7 @@ namespace :csv do
     desc "Usersテーブルのemailをcsvエクスポートする"
     task export: :environment do
         # FIXME: 本来はconfファイルに切り出すべき
-        BATCH_SIZE = 2
+        BATCH_SIZE = 100
         FILEDIR = "tmp"
         FILENAME = "users.csv"
         FILEPATH = "#{FILEDIR}/#{FILENAME}"
