@@ -16,7 +16,8 @@ namespace :csv do
             csv << column_names
 
             User.limit(BATCH_SIZE).find_each do |user|
-                column_values = [ nil, nil, nil, nil, nil, nil, nil, nil, nil, user.email, true, nil, nil, nil, nil, nil, false, nil, nil, false, user.email ]
+                email = user.email.gsub(/ /, "+")
+                column_values = [ nil, nil, nil, nil, nil, nil, nil, nil, nil, email, true, nil, nil, nil, nil, nil, false, nil, nil, false, email ]
                 csv << column_values
             end
         end
