@@ -1,5 +1,0 @@
-type LineData @model {
-  id: ID!
-  label: String!
-  data: Int!
-}
