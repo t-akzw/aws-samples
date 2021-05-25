@@ -1,6 +1,6 @@
   import { createApp } from 'vue'
   import App from './App.vue'
-  import Amplify, { Interactions } from 'aws-amplify';
+  import Amplify from 'aws-amplify';
   import aws_exports from './aws-exports';
   import {
     applyPolyfills,
@@ -9,10 +9,10 @@
  
   Amplify.configure(aws_exports);
   Amplify.configure({
-    Auth: {
-      identityPoolId: 'us-east-1:xxx-xxx-xxx-xxx-xxx',
-      region: 'us-east-1'
-    },
+ //   Auth: {
+ //    identityPoolId: 'us-east-1:xxx-xxx-xxx-xxx-xxx',
+ //     region: 'us-east-1'
+ //   },
     Interactions: {
       bots: {
         "OrderFlowers_dev": {
