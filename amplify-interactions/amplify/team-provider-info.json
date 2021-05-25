@@ -1,0 +1,32 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifyinteractions-dev-22550-authRole",
+      "UnauthRoleArn": "arn:aws:iam::067150986393:role/amplify-amplifyinteractions-dev-22550-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::067150986393:role/amplify-amplifyinteractions-dev-22550-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amplifyinteractions-dev-22550-deployment",
+      "UnauthRoleName": "amplify-amplifyinteractions-dev-22550-unauthRole",
+      "StackName": "amplify-amplifyinteractions-dev-22550",
+      "StackId": "arn:aws:cloudformation:us-east-1:067150986393:stack/amplify-amplifyinteractions-dev-22550/867bebd0-bd00-11eb-97e8-0abd460f6797",
+      "AmplifyAppId": "d1ggo2h87pwycn"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1ggo2h87pwycn",
+          "type": "manual"
+        }
+      },
+      "auth": {
+        "cognito8e7170e0": {}
+      },
+      "interactions": {
+        "lex5cc38b10": {
+          "deploymentBucketName": "amplify-amplifyinteractions-dev-22550-deployment",
+          "s3Key": "amplify-builds/lex5cc38b10-503272474e427a794b58-build.zip"
+        }
+      }
+    }
+  }
+}
